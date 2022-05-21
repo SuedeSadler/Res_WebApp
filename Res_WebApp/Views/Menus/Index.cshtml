@@ -1,24 +1,22 @@
 ﻿@model IEnumerable<Res_WebApp.Models.Menu>
 
-
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Currrent Menu</h1>
+<h1>Full Menu</h1>
+
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                Image of food
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
@@ -36,9 +34,6 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                <img src="~/image/@item.ImgFood" asp-append-version = "true" width= "100" height= "100"/>
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
@@ -50,6 +45,14 @@
                 <a asp-action="Delete" asp-route-id="@item.MenuId">Delete</a>
             </td>
         </tr>
-}
+      }
+      
     </tbody>
 </table>
+
+
+@section Scripts {
+    <script>
+        $('#PartialZone').load("/Home/MenuPartial")
+    </script>
+}
