@@ -13,12 +13,10 @@ namespace Res_WebApp.Controllers
     public class UsersController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly IWebHostEnvironment _hostEnvirooment;
 
-        public UsersController(ApplicationDbContext context, IWebHostEnvironment hostEnvirooment)
+        public UsersController(ApplicationDbContext context)
         {
             _context = context;
-            this._hostEnvirooment = hostEnvirooment;
         }
 
         // GET: Users
@@ -58,19 +56,10 @@ namespace Res_WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UserId,ImageProfile,FirstName,LastName,Email,Phone,Password")] Users users)
+        public async Task<IActionResult> Create([Bind("UserId,FirstName,LastName,Email,Phone,Password")] Users users)
         {
             if (ModelState.IsValid)
             {
-                string wwwRootPath = _hostEnvirooment.WebRootPath;
-                string fileName = Path.GetFileNameWithoutExtension(users.ImageProfile.FileName);
-                string extention = Path.GetExtension(users.ImageProfile.FileName);
-                users.ProfilePicture = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extention;
-                string path = Path.Combine(wwwRootPath + "/ProfilePictures/", fileName);
-                using (var fileStream = new FileStream(path, FileMode.Create))
-                {
-                    await users.ImageProfile.CopyToAsync(fileStream);
-                }
                 _context.Add(users);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -99,7 +88,7 @@ namespace Res_WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserId,ProfilePicture,FirstName,LastName,Email,Phone,Password")] Users users)
+        public async Task<IActionResult> Edit(int id, [Bind("UserId,FirstName,LastName,Email,Phone,Password")] Users users)
         {
             if (id != users.UserId)
             {

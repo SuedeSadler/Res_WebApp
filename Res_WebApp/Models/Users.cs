@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Res_WebApp.Models
 {
@@ -8,7 +7,6 @@ namespace Res_WebApp.Models
     {
         [Key]
         public int UserId { get; set; }
-        public String ?ProfilePicture { get; set; }
         [DisplayName("First Name")]
         public string ?FirstName { get; set; }
         [DisplayName("Last Name")]
@@ -16,9 +14,9 @@ namespace Res_WebApp.Models
         public string ?Email { get; set; }
         public int ?Phone { get; set; }
         public string ?Password { get; set; }
-        [NotMapped]
-        [DisplayName("Upload a Profile Picture")]
-        public IFormFile ?ImageProfile { get; set; }
-       
+        public Users()
+        {
+
+        }
     }
 }

@@ -15,6 +15,7 @@ namespace Res_WebApp.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _hostEnvirooment;
+
         public MenusController(ApplicationDbContext context, IWebHostEnvironment hostEnvirooment)
         {
             _context = context;
