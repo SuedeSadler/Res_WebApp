@@ -7,7 +7,7 @@ namespace Res_WebApp.Models
     {
         [Key]
         public int ResId { get; set; }
-        [DisplayName("Booking Name?")]
+        [DisplayName("Who is Booking?")]
         public string ?Name { get; set; }
         public int ?UserId { get; set; }
         [DisplayName("Number of people attending?")]

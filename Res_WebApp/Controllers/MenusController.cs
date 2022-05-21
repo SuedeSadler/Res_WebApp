@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -14,12 +13,10 @@ namespace Res_WebApp.Controllers
     public class MenusController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly IWebHostEnvironment _hostEnvirooment;
 
-        public MenusController(ApplicationDbContext context, IWebHostEnvironment hostEnvirooment)
+        public MenusController(ApplicationDbContext context)
         {
             _context = context;
-            this._hostEnvirooment = hostEnvirooment;
         }
 
         // GET: Menus
@@ -59,23 +56,10 @@ namespace Res_WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MenuId,ImageFile,Name,Description,Price")] Menu menu)
+        public async Task<IActionResult> Create([Bind("MenuId,Name,Description,Price")] Menu menu)
         {
-            
-            if (ModelState.IsValid)     
+            if (ModelState.IsValid)
             {
-                //Save Image to www.Root/Image
-                string wwwRootPath = _hostEnvirooment.WebRootPath;
-                string fileName = Path.GetFileNameWithoutExtension(menu.ImageFile.FileName);
-                string extention = Path.GetExtension(menu.ImageFile.FileName);
-                menu.ImgFood=fileName = fileName + DateTime.Now.ToString("yymmssfff") + extention;
-                string path = Path.Combine(wwwRootPath + "/Image/", fileName);
-                using (var fileStream = new FileStream(path,FileMode.Create))
-                {
-                    await menu.ImageFile.CopyToAsync(fileStream);
-                }
-
-
                 _context.Add(menu);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -104,7 +88,7 @@ namespace Res_WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MenuId,ImgFood,Name,Description,Price")] Menu menu)
+        public async Task<IActionResult> Edit(int id, [Bind("MenuId,Name,Description,Price")] Menu menu)
         {
             if (id != menu.MenuId)
             {
@@ -174,6 +158,10 @@ namespace Res_WebApp.Controllers
         private bool MenuExists(int id)
         {
           return (_context.Menu?.Any(e => e.MenuId == id)).GetValueOrDefault();
+        }
+        public IActionResult MenuPartial()
+        {
+            return PartialView("_MenuPartial", _context.Menu);
         }
     }
 }
