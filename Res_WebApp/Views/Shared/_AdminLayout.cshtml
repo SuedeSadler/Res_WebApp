@@ -97,7 +97,6 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
                         <a class="collapse-item" asp-area="" asp-controller="Users" asp-action="Index">Manage Users</a>
                         <a class="collapse-item" asp-area="" asp-controller="Users" asp-action="Create">Create New User</a>
                         
@@ -240,6 +239,25 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Total Users
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">57</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Content Row -->
@@ -247,7 +265,7 @@
                     <div class="row">
 
                         <!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-7">
+                        <div class="col-xl-12 col-lg-7">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -260,7 +278,7 @@
                             </div>
                         </div>
 
-                        <!-- Pie Chart -->
+                        @*<!-- Pie Chart -->
                         <div class="col-xl-4 col-lg-5">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
@@ -275,7 +293,7 @@
                                     
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                 </div>
                 <!-- /.container-fluid -->

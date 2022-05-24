@@ -15,7 +15,7 @@ namespace Res_WebApp.Models
         [DataType(DataType.Currency)]
         public float? Price { get; set; }
         [NotMapped]
-        [DisplayName("Upload")]
+        [DisplayName("Upload an Image of Item")]
         public IFormFile ?ImageFile { get; set; }
 
     }
