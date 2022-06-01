@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Res_WebApp.Data;
 
@@ -11,9 +12,10 @@ using Res_WebApp.Data;
 namespace Res_WebApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220530101659_ResUpdate")]
+    partial class ResUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -235,9 +237,6 @@ namespace Res_WebApp.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FoodType")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ImgFood")
                         .HasColumnType("nvarchar(max)");
 
@@ -269,6 +268,9 @@ namespace Res_WebApp.Data.Migrations
                     b.Property<int?>("NumPeople")
                         .HasColumnType("int");
 
+                    b.Property<string>("TablePic")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
 
@@ -299,9 +301,6 @@ namespace Res_WebApp.Data.Migrations
 
                     b.Property<int?>("Phone")
                         .HasColumnType("int");
-
-                    b.Property<string>("ProfilePic")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId");
 

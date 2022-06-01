@@ -8,6 +8,8 @@ namespace Res_WebApp.Models
     {
         [Key]
         public int UserId { get; set; }
+        [DisplayName("Profile Picture")]
+        public string ?ProfilePic { get; set; }
         [DisplayName("First Name")]
         public string ?FirstName { get; set; }
         [DisplayName("Last Name")]

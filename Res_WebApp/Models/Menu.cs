@@ -12,11 +12,13 @@ namespace Res_WebApp.Models
         public string ?ImgFood { get; set; }
         public string ?Name { get; set; }
         public string ?Description { get; set; }
+        [DisplayName("Food Type")]
+        public String ?FoodType { get; set; }
         [DataType(DataType.Currency)]
         public float? Price { get; set; }
         [NotMapped]
         [DisplayName("Upload an Image of Item")]
-        public IFormFile ?ImageFile { get; set; }
+        public IFormFile ImageFile { get; set; }
 
     }
 }

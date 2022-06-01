@@ -14,10 +14,6 @@ namespace Res_WebApp.Models
         public int ?NumPeople { get; set; }
         [DisplayName("Date and time of Resrvation")]
         public DateTime ?Date { get; set; }
-        public Reservations()
-        {
-
-        }
         
 
     }
