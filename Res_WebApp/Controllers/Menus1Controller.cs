@@ -37,7 +37,9 @@ namespace Res_WebApp.Controllers
         }
         public IActionResult Mains()
         {
-            return View(_context.Menu.Where(o => o.FoodType == "Main").ToList());
+            return _context.Menu != null ?
+                         View(_context.Menu.Where(o => o.FoodType == "Mains").ToList()) :
+                         Problem("Entity set 'ApplicationDbContext.Menu'  is null.");
         }
 
         public IActionResult Drinks()
@@ -48,7 +50,9 @@ namespace Res_WebApp.Controllers
         }
         public IActionResult Deserts()
         {
-            return View(_context.Menu.Where(o => o.FoodType == "Desert").ToList());
+            return _context.Menu != null ?
+                        View(_context.Menu.Where(o => o.FoodType == "Deserts").ToList()) :
+                        Problem("Entity set 'ApplicationDbContext.Menu'  is null.");
         }
 
         // GET: Menus1/Details/5
